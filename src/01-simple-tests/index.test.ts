@@ -19,12 +19,13 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should exponentiate two numbers', () => {
-    expect(simpleCalculator({ a: 2, b: 3, action: Action.Exponentiate })).toBe(8);
+    expect(simpleCalculator({ a: 2, b: 3, action: Action.Exponentiate })).toBe(
+      8,
+    );
   });
 
   test('should return null for invalid action', () => {
-
-    function isInvalidAction(check: any) {
+    function isInvalidAction(check: string | number) {
       if (!Action.hasOwnProperty(check)) {
         return null;
       }
@@ -34,11 +35,10 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should return null for invalid arguments', () => {
-
-    function isInvalidArgs(a: any, b: any) {
-      if (! (typeof a === 'number' && typeof b === 'number') ) {
+    function isInvalidArgs(a: number | string, b: number | string) {
+      if (!(typeof a === 'number' && typeof b === 'number')) {
         return null;
-      }      
+      }
     }
 
     expect(isInvalidArgs('test', 8)).toBeNull();
